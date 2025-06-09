@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Button, TextField, Typography, Divider } from "@mui/material";
+import { Card, CardContent } from "@mui/material";
 
 type FormData = {
+  
   // 1. Identificação Completa - Recorrente
   nomeRazaoSocial: string;
   cnpjCpf: string;
@@ -173,347 +175,126 @@ export default function FormularioRecurso() {
   }
 
   return (
+  <Box sx={{ backgroundColor: "#f5f5f5", minHeight: "100vh", pt: 25 }}>
     <Box
       component="form"
       onSubmit={handleSubmit}
       sx={{
         maxWidth: 800,
         mx: "auto",
-        p: 2,
+        px: 2,
         display: "flex",
         flexDirection: "column",
-        gap: 3,
+        gap: 4,
       }}
       noValidate
       autoComplete="off"
     >
-      <Typography variant="h5" component="h2" gutterBottom>
-        1. Identificação Completa
-      </Typography>
+      {/* CARD 1 - Identificação Completa */}
+      <Card elevation={3} sx={{ borderRadius: 4, mb: 3 }}>
+        <CardContent sx={{ px: 7, pt: 7, pb: 10 }}>
+          <Typography variant="h5" gutterBottom>1. Identificação Completa</Typography>
 
-      <Typography variant="subtitle1" gutterBottom>
-        Do Recorrente
-      </Typography>
+          <Typography variant="subtitle1" gutterBottom>Do Recorrente</Typography>
+          <TextField label="Nome/Razão Social completa" name="nomeRazaoSocial" value={formData.nomeRazaoSocial} onChange={handleChange} fullWidth required sx={{ mb: 2 }} />
+          <TextField label="CNPJ/CPF" name="cnpjCpf" value={formData.cnpjCpf} onChange={handleChange} fullWidth required sx={{ mb: 2 }} />
+          <TextField label="Endereço completo" name="endereco" value={formData.endereco} onChange={handleChange} fullWidth required sx={{ mb: 2 }} />
+          <TextField label="CEP" name="cep" value={formData.cep} onChange={handleChange} fullWidth required sx={{ mb: 2 }} />
+          <TextField label="Telefone" name="telefone" value={formData.telefone} onChange={handleChange} fullWidth sx={{ mb: 2 }} />
+          <TextField label="E-mail" name="email" type="email" value={formData.email} onChange={handleChange} fullWidth required sx={{ mb: 2 }} />
+          <TextField label="Dados do representante legal (se aplicável)" name="representanteLegal" value={formData.representanteLegal} onChange={handleChange} fullWidth multiline minRows={2} sx={{ mb: 4 }} />
 
-      <TextField
-        label="Nome/Razão Social completa"
-        name="nomeRazaoSocial"
-        value={formData.nomeRazaoSocial}
-        onChange={handleChange}
-        fullWidth
-        required
-      />
-      <TextField
-        label="CNPJ/CPF"
-        name="cnpjCpf"
-        value={formData.cnpjCpf}
-        onChange={handleChange}
-        fullWidth
-        required
-      />
-      <TextField
-        label="Endereço completo"
-        name="endereco"
-        value={formData.endereco}
-        onChange={handleChange}
-        fullWidth
-        required
-      />
-      <TextField
-        label="CEP"
-        name="cep"
-        value={formData.cep}
-        onChange={handleChange}
-        fullWidth
-        required
-      />
-      <TextField
-        label="Telefone"
-        name="telefone"
-        value={formData.telefone}
-        onChange={handleChange}
-        fullWidth
-      />
-      <TextField
-        label="E-mail"
-        name="email"
-        type="email"
-        value={formData.email}
-        onChange={handleChange}
-        fullWidth
-        required
-      />
-      <TextField
-        label="Dados do representante legal (se aplicável)"
-        name="representanteLegal"
-        value={formData.representanteLegal}
-        onChange={handleChange}
-        fullWidth
-        multiline
-        minRows={2}
-      />
+          <Typography variant="subtitle1" gutterBottom>Do Órgão/Entidade Licitante</Typography>
+          <TextField label="Nome do Órgão/Entidade" name="nomeOrgao" value={formData.nomeOrgao} onChange={handleChange} fullWidth required sx={{ mb: 2 }} />
+          <TextField label="Endereço completo" name="enderecoOrgao" value={formData.enderecoOrgao} onChange={handleChange} fullWidth required sx={{ mb: 2 }} />
+          <TextField label="Setor responsável pela licitação" name="setorResponsavel" value={formData.setorResponsavel} onChange={handleChange} fullWidth sx={{ mb: 4 }} />
+        </CardContent>
+      </Card>
 
-      <Typography variant="subtitle1" gutterBottom sx={{ mt: 3 }}>
-        Do Órgão/Entidade Licitante
-      </Typography>
-      <TextField
-        label="Nome do Órgão/Entidade"
-        name="nomeOrgao"
-        value={formData.nomeOrgao}
-        onChange={handleChange}
-        fullWidth
-        required
-      />
-      <TextField
-        label="Endereço completo"
-        name="enderecoOrgao"
-        value={formData.enderecoOrgao}
-        onChange={handleChange}
-        fullWidth
-        required
-      />
-      <TextField
-        label="Setor responsável pela licitação"
-        name="setorResponsavel"
-        value={formData.setorResponsavel}
-        onChange={handleChange}
-        fullWidth
-      />
+      {/* CARD 2 - Informações da Licitação */}
+      <Card elevation={3} sx={{ borderRadius: 4, mb: 3 }}>
+        <CardContent sx={{ px: 7, pt: 7, pb: 10 }}>
+          <Typography variant="h5" gutterBottom>2. Informações da Licitação</Typography>
+          <TextField label="Número da Licitação (Pregão, Concorrência, etc.)" name="numeroLicitacao" value={formData.numeroLicitacao} onChange={handleChange} fullWidth required sx={{ mb: 2 }} />
+          <TextField label="Objeto da Licitação" name="objetoLicitacao" value={formData.objetoLicitacao} onChange={handleChange} fullWidth multiline minRows={3} required sx={{ mb: 2 }} />
+          <TextField label="Data da Publicação do Edital" name="dataPublicacaoEdital" type="date" value={formData.dataPublicacaoEdital} onChange={handleChange} fullWidth InputLabelProps={{ shrink: true }} sx={{ mb: 2 }} />
+          <TextField label="Data da Sessão Pública" name="dataSessaoPublica" type="date" value={formData.dataSessaoPublica} onChange={handleChange} fullWidth InputLabelProps={{ shrink: true }} sx={{ mb: 2 }} />
+          <TextField label="Valor Estimado da Licitação" name="valorEstimado" value={formData.valorEstimado} onChange={handleChange} fullWidth sx={{ mb: 2 }} />
+          <TextField label="Critério de Julgamento" name="criterioJulgamento" value={formData.criterioJulgamento} onChange={handleChange} fullWidth sx={{ mb: 2 }} />
+          <TextField label="Link para o Edital" name="linkEdital" value={formData.linkEdital} onChange={handleChange} fullWidth sx={{ mb: 4 }} />
+        </CardContent>
+      </Card>
 
-      <Divider sx={{ my: 4 }} />
+      {/* CARD 3 - Ato Recorrido */}
+      <Card elevation={3} sx={{ borderRadius: 4, mb: 3 }}>
+        <CardContent sx={{ px: 7, pt: 7, pb: 10 }}>
+          <Typography variant="h5" gutterBottom>3. Ato Recorrido</Typography>
+          <TextField label="Descrição Detalhada do Ato" name="descricaoAto" value={formData.descricaoAto} onChange={handleChange} fullWidth multiline minRows={3} required sx={{ mb: 2 }} />
+          <TextField label="Fundamentos da Decisão" name="fundamentosDecisao" value={formData.fundamentosDecisao} onChange={handleChange} fullWidth multiline minRows={3} sx={{ mb: 2 }} />
+          <TextField label="Data da Publicação/Notificação do Ato Recorrido" name="dataPublicacaoAto" type="date" value={formData.dataPublicacaoAto} onChange={handleChange} fullWidth InputLabelProps={{ shrink: true }} sx={{ mb: 4 }} />
+        </CardContent>
+      </Card>
 
-      <Typography variant="h5" component="h2" gutterBottom>
-        2. Informações da Licitação
-      </Typography>
+      {/* CARD 4 - Fundamentos do Recurso */}
+      <Card elevation={3} sx={{ borderRadius: 4, mb: 3 }}>
+        <CardContent sx={{ px: 7, pt: 7, pb: 10 }}>
+          <Typography variant="h5" gutterBottom>4. Fundamentos do Recurso</Typography>
+          <TextField label="Argumentos de Fato" name="argumentosFato" value={formData.argumentosFato} onChange={handleChange} fullWidth multiline minRows={4} required sx={{ mb: 2 }} />
+          <TextField label="Argumentos de Direito" name="argumentosDireito" value={formData.argumentosDireito} onChange={handleChange} fullWidth multiline minRows={4} sx={{ mb: 2 }} />
+          <TextField label="Argumentos Técnicos (se aplicável)" name="argumentosTecnicos" value={formData.argumentosTecnicos} onChange={handleChange} fullWidth multiline minRows={4} sx={{ mb: 2 }} />
+          <TextField label="Demonstração de Prejuízo" name="demonstracaoPrejuizo" value={formData.demonstracaoPrejuizo} onChange={handleChange} fullWidth multiline minRows={3} sx={{ mb: 4 }} />
+        </CardContent>
+      </Card>
 
-      <TextField
-        label="Número da Licitação (Pregão, Concorrência, etc.)"
-        name="numeroLicitacao"
-        value={formData.numeroLicitacao}
-        onChange={handleChange}
-        fullWidth
-        required
-      />
-      <TextField
-        label="Objeto da Licitação"
-        name="objetoLicitacao"
-        value={formData.objetoLicitacao}
-        onChange={handleChange}
-        fullWidth
-        multiline
-        minRows={3}
-        required
-      />
-      <TextField
-        label="Data da Publicação do Edital"
-        name="dataPublicacaoEdital"
-        type="date"
-        value={formData.dataPublicacaoEdital}
-        onChange={handleChange}
-        fullWidth
-        InputLabelProps={{ shrink: true }}
-      />
-      <TextField
-        label="Data da Sessão Pública"
-        name="dataSessaoPublica"
-        type="date"
-        value={formData.dataSessaoPublica}
-        onChange={handleChange}
-        fullWidth
-        InputLabelProps={{ shrink: true }}
-      />
-      <TextField
-        label="Valor Estimado da Licitação"
-        name="valorEstimado"
-        value={formData.valorEstimado}
-        onChange={handleChange}
-        fullWidth
-      />
-      <TextField
-        label="Critério de Julgamento"
-        name="criterioJulgamento"
-        value={formData.criterioJulgamento}
-        onChange={handleChange}
-        fullWidth
-      />
-      <TextField
-        label="Link para o Edital"
-        name="linkEdital"
-        value={formData.linkEdital}
-        onChange={handleChange}
-        fullWidth
-      />
+      {/* CARD 5 - Documentos Anexos */}
+      <Card elevation={3} sx={{ borderRadius: 4, mb: 3 }}>
+        <CardContent sx={{ px: 7, pt: 7, pb: 10 }}>
+          <Typography variant="h5" gutterBottom>5. Documentos Anexos</Typography>
+          <TextField label="Cópia do edital da licitação" name="copiaEdital" value={formData.copiaEdital} onChange={handleChange} fullWidth sx={{ mb: 2 }} />
+          <TextField label="Cópia do ato recorrido" name="copiaAtoRecorrido" value={formData.copiaAtoRecorrido} onChange={handleChange} fullWidth sx={{ mb: 2 }} />
+          <TextField label="Procuração (se aplicável)" name="procuracao" value={formData.procuracao} onChange={handleChange} fullWidth sx={{ mb: 2 }} />
+          <TextField label="Documentos que comprovam os fatos alegados" name="comprovacaoFatos" value={formData.comprovacaoFatos} onChange={handleChange} fullWidth multiline minRows={2} sx={{ mb: 2 }} />
+          <TextField label="Laudos técnicos, pareceres de especialistas" name="laudosTecnicos" value={formData.laudosTecnicos} onChange={handleChange} fullWidth multiline minRows={2} sx={{ mb: 2 }} />
+          <TextField label="Outros documentos relevantes" name="outrosDocumentos" value={formData.outrosDocumentos} onChange={handleChange} fullWidth multiline minRows={2} sx={{ mb: 4 }} />
+        </CardContent>
+      </Card>
 
-      <Divider sx={{ my: 4 }} />
+      {/* CARD 6 - Pedido */}
+      <Card elevation={3} sx={{ borderRadius: 4, mb: 3 }}>
+        <CardContent sx={{ px: 7, pt: 7, pb: 10 }}>
+          <Typography variant="h5" gutterBottom>6. Pedido</Typography>
+          <TextField label="O que você quer que a Administração faça?" name="pedido" value={formData.pedido} onChange={handleChange} fullWidth multiline minRows={3} required sx={{ mb: 4 }} />
+        </CardContent>
+      </Card>
 
-      <Typography variant="h5" component="h2" gutterBottom>
-        3. Ato Recorrido
-      </Typography>
+      {/* CARD 7 - Informações Adicionais */}
+      <Card elevation={3} sx={{ borderRadius: 4, mb: 3 }}>
+        <CardContent sx={{ px: 7, pt: 7, pb: 10 }}>
+          <Typography variant="h5" gutterBottom>7. Informações Adicionais</Typography>
+          <TextField label="Informações adicionais relevantes" name="informacoesAdicionais" value={formData.informacoesAdicionais} onChange={handleChange} fullWidth multiline minRows={3} sx={{ mb: 4 }} />
+        </CardContent>
+      </Card>
 
-      <TextField
-        label="Descrição Detalhada do Ato"
-        name="descricaoAto"
-        value={formData.descricaoAto}
-        onChange={handleChange}
-        fullWidth
-        multiline
-        minRows={3}
-        required
-      />
-      <TextField
-        label="Fundamentos da Decisão"
-        name="fundamentosDecisao"
-        value={formData.fundamentosDecisao}
-        onChange={handleChange}
-        fullWidth
-        multiline
-        minRows={3}
-      />
-      <TextField
-        label="Data da Publicação/Notificação do Ato Recorrido"
-        name="dataPublicacaoAto"
-        type="date"
-        value={formData.dataPublicacaoAto}
-        onChange={handleChange}
-        fullWidth
-        InputLabelProps={{ shrink: true }}
-      />
-
-      <Divider sx={{ my: 4 }} />
-
-      <Typography variant="h5" component="h2" gutterBottom>
-        4. Fundamentos do Recurso
-      </Typography>
-
-      <TextField
-        label="Argumentos de Fato"
-        name="argumentosFato"
-        value={formData.argumentosFato}
-        onChange={handleChange}
-        fullWidth
-        multiline
-        minRows={4}
-        required
-      />
-      <TextField
-        label="Argumentos de Direito"
-        name="argumentosDireito"
-        value={formData.argumentosDireito}
-        onChange={handleChange}
-        fullWidth
-        multiline
-        minRows={4}
-      />
-      <TextField
-        label="Argumentos Técnicos (se aplicável)"
-        name="argumentosTecnicos"
-        value={formData.argumentosTecnicos}
-        onChange={handleChange}
-        fullWidth
-        multiline
-        minRows={4}
-      />
-      <TextField
-        label="Demonstração de Prejuízo"
-        name="demonstracaoPrejuizo"
-        value={formData.demonstracaoPrejuizo}
-        onChange={handleChange}
-        fullWidth
-        multiline
-        minRows={3}
-      />
-
-      <Divider sx={{ my: 4 }} />
-
-      <Typography variant="h5" component="h2" gutterBottom>
-        5. Documentos Anexos
-      </Typography>
-
-      <TextField
-        label="Cópia do edital da licitação"
-        name="copiaEdital"
-        value={formData.copiaEdital}
-        onChange={handleChange}
-        fullWidth
-      />
-      <TextField
-        label="Cópia do ato recorrido"
-        name="copiaAtoRecorrido"
-        value={formData.copiaAtoRecorrido}
-        onChange={handleChange}
-        fullWidth
-      />
-      <TextField
-        label="Procuração (se aplicável)"
-        name="procuracao"
-        value={formData.procuracao}
-        onChange={handleChange}
-        fullWidth
-      />
-      <TextField
-        label="Documentos que comprovam os fatos alegados"
-        name="comprovacaoFatos"
-        value={formData.comprovacaoFatos}
-        onChange={handleChange}
-        fullWidth
-        multiline
-        minRows={2}
-      />
-      <TextField
-        label="Laudos técnicos, pareceres de especialistas"
-        name="laudosTecnicos"
-        value={formData.laudosTecnicos}
-        onChange={handleChange}
-        fullWidth
-        multiline
-        minRows={2}
-      />
-      <TextField
-        label="Outros documentos relevantes"
-        name="outrosDocumentos"
-        value={formData.outrosDocumentos}
-        onChange={handleChange}
-        fullWidth
-        multiline
-        minRows={2}
-      />
-
-      <Divider sx={{ my: 4 }} />
-
-      <Typography variant="h5" component="h2" gutterBottom>
-        6. Pedido
-      </Typography>
-
-      <TextField
-        label="O que você quer que a Administração faça?"
-        name="pedido"
-        value={formData.pedido}
-        onChange={handleChange}
-        fullWidth
-        multiline
-        minRows={3}
-        required
-      />
-
-      <Divider sx={{ my: 4 }} />
-
-      <Typography variant="h5" component="h2" gutterBottom>
-        7. Informações Adicionais
-      </Typography>
-
-      <TextField
-        label="Informações adicionais relevantes"
-        name="informacoesAdicionais"
-        value={formData.informacoesAdicionais}
-        onChange={handleChange}
-        fullWidth
-        multiline
-        minRows={3}
-      />
-
-      <Button variant="contained" type="submit" sx={{ mt: 3 }}>
-        Enviar Recurso
+      {/* Botão Final */}
+      <Button
+        variant="contained"
+        type="submit"
+        sx={{
+          background: "#05467f",
+          width: "300px",
+          mt: 6,
+          mb: 8,
+          py: 1.5,
+          fontWeight: "bold",
+          fontSize: "1rem",
+          borderRadius: "8px",
+          boxShadow: 2,
+          mx: "auto",
+        }}
+      >
+        Construir Recurso
       </Button>
     </Box>
+  </Box>
   );
 }
