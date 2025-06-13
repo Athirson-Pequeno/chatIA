@@ -102,7 +102,7 @@ export default function TelaCapa() {
         <p style={{ fontSize: "1.2rem",      
                     marginTop: "2rem",       
                     fontWeight: 400,
-                    textDecoration: "underline", }}>
+                    }}>
           Clique em qualquer lugar para continuar
         </p>
       </div>
