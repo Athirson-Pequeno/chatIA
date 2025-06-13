@@ -12,7 +12,7 @@ export default function BarraNavegacao() {
         {/* Lado esquerdo */}
         <Box 
           onClick={() => {
-              navigate("/");
+              navigate("/inicio");
               window.scrollTo({ top: 0, behavior: "smooth" }); // ← força o scroll
             }} 
           sx={{ display: "flex", alignItems: "center", gap: 2, cursor: "pointer" }}
@@ -35,7 +35,7 @@ export default function BarraNavegacao() {
           <Button
             sx={{ color: "#05467f" }}
             onClick={() => {
-              navigate("/");
+              navigate("/Inicio");
               window.scrollTo({ top: 0, behavior: "smooth" }); // ← força o scroll
             }}
           >
@@ -57,9 +57,7 @@ export default function BarraNavegacao() {
             >
               Assistente IA
           </Button>
-          <Button sx={{ color: "#05467f" }}>
-            Login
-          </Button>
+          
         </Box>
       </Toolbar>
     </AppBar>

@@ -7,25 +7,67 @@ import BarraNavegacao from "./components/BarraNavegacao";
 import PaginaInicial from "./components/PaginaInicial";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import TelaCapa from "./components/TelaCapa";
 
 export default function App() {
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh", width: "100%" }}>
-      <Router>
-        <ScrollToTop /> {/* ✅ Adicionado aqui */}
-        <BarraNavegacao />
-        
-        <Box sx={{ flex: 1, width: "100%"}}>
-          <Routes>
-            <Route path="/" element={<PaginaInicial />} />
-            <Route path="/formulario" element={<MeuFormulario />} />
-            <Route path="/formulario2" element={<Formulario2 />} />
-            <Route path="/resultado" element={<Resultado />} />
-          </Routes>
-        </Box>
+    <Router>
+      <ScrollToTop />
 
-        <Footer />
-      </Router>
-    </Box>
+      <Routes>
+        {/* TelaCapa SEM barra e sem footer */}
+        <Route path="/" element={<TelaCapa />} />
+
+        {/* Outras páginas COM barra e footer */}
+        <Route
+          path="/inicio"
+          element={
+            <>
+              <BarraNavegacao />
+              <Box sx={{ flex: 1, width: "100%" }}>
+                <PaginaInicial />
+              </Box>
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/formulario"
+          element={
+            <>
+              <BarraNavegacao />
+              <Box sx={{ flex: 1, width: "100%" }}>
+                <MeuFormulario />
+              </Box>
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/formulario2"
+          element={
+            <>
+              <BarraNavegacao />
+              <Box sx={{ flex: 1, width: "100%" }}>
+                <Formulario2 />
+              </Box>
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/resultado"
+          element={
+            <>
+              <BarraNavegacao />
+              <Box sx={{ flex: 1, width: "100%" }}>
+                <Resultado />
+              </Box>
+              <Footer />
+            </>
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
