@@ -44,14 +44,14 @@ export default function BarraNavegacao() {
           <Button
               sx={{ color: "#05467f" }}
               onClick={() => {
-                if (window.location.pathname === "/") {
+                if (window.location.pathname === "/inicio") {
                   const elemento = document.getElementById("secao-pesquisa");
                   if (elemento) {
                     elemento.scrollIntoView({ behavior: "smooth" });
                   }
                 } else {
                   localStorage.setItem("rolarPara", "pesquisa");
-                  navigate("/");
+                  navigate("/inicio");
                 }
               }}
             >
