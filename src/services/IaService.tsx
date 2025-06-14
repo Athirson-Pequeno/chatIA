@@ -3,7 +3,7 @@ import type { Chat } from "@google/genai";
 
 // Inicializa cliente Uma única vez
 const ai = new GoogleGenAI({
-  apiKey: "AIzaSyAvyRiXPJBbWaBDw-PZY0bSu8QcxIyh_cM"
+  apiKey: import.meta.env.VITE_API_KEY,
 });
 
 /**
@@ -15,9 +15,9 @@ export async function createAgentChat(systemPrompt: string): Promise<Chat> {
     history: [
       {
         role: "user",
-        parts: [{ text: systemPrompt }]
-      }
-    ]
+        parts: [{ text: systemPrompt }],
+      },
+    ],
   });
   return chat;
 }
