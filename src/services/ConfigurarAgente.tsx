@@ -17,7 +17,7 @@ export default function App(): JSX.Element {
   const [history, setHistory] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [configured, setConfigured] = useState(false);
+  const [, setConfigured] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   // SystemPrompt não precisa ser estado porque não muda dinamicamente
@@ -76,7 +76,10 @@ export default function App(): JSX.Element {
       ]);
     } finally {
       setLoading(false);
-      setTimeout(() => bottomRef.current?.scrollIntoView({ behavior: "smooth" }), 50);
+      setTimeout(
+        () => bottomRef.current?.scrollIntoView({ behavior: "smooth" }),
+        50
+      );
     }
   };
 
@@ -101,28 +104,32 @@ export default function App(): JSX.Element {
           background: "#fafafa",
         }}
       >
-        {history.map((msg, i) => (
-          <div
-            key={i}
-            style={{
-              textAlign: msg.role === "user" ? "right" : "left",
-              margin: "8px 0",
-            }}
-          >
+        {history.map((msg, i) => {
+          if (i === 0) return null;
+
+          return (
             <div
+              key={i}
               style={{
-                display: "inline-block",
-                padding: "8px 12px",
-                borderRadius: 16,
-                background: msg.role === "user" ? "#007aff" : "#e5e5ea",
-                color: msg.role === "user" ? "#fff" : "#000",
-                maxWidth: "80%",
+                textAlign: msg.role === "user" ? "right" : "left",
+                margin: "8px 0",
               }}
             >
-              <Markdown>{msg.text}</Markdown>
+              <div
+                style={{
+                  display: "inline-block",
+                  padding: "8px 12px",
+                  borderRadius: 16,
+                  background: msg.role === "user" ? "#05467F" : "#e5e5ea",
+                  color: msg.role === "user" ? "#fff" : "#000",
+                  maxWidth: "80%",
+                }}
+              >
+                <Markdown>{msg.text}</Markdown>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
         <div ref={bottomRef} />
       </div>
 
@@ -147,7 +154,7 @@ export default function App(): JSX.Element {
             marginLeft: 8,
             padding: "0 16px",
             borderRadius: 8,
-            background: "#007aff",
+            background: "#05467F",
             color: "#fff",
             border: "none",
           }}

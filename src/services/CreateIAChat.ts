@@ -2,7 +2,7 @@ import type { Chat } from "@google/genai";
 import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({
-  apiKey: "AIzaSyAvyRiXPJBbWaBDw-PZY0bSu8QcxIyh_cM"
+  apiKey:  import.meta.env.VITE_API_KEY
 });
 
 export async function createAssistenteChat(): Promise<Chat> {

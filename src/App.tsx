@@ -32,7 +32,7 @@ export default function App() {
           }
         />
         <Route
-          path="/formulario"
+          path="/recurso"
           element={
             <>
               <BarraNavegacao />
@@ -44,7 +44,7 @@ export default function App() {
           }
         />
         <Route
-          path="/formulario2"
+          path="/contrarrazao"
           element={
             <>
               <BarraNavegacao />

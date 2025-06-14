@@ -81,7 +81,7 @@ return (
         <Box sx={{ mt: 10, display: "flex", flexDirection: "column", gap: 2 }}>
           <Button
             variant="outlined"
-            onClick={() => navigate("/formulario")}
+            onClick={() => navigate("/recurso")}
             sx={{
               color: "#fff",
               borderColor: "#fff",
@@ -105,7 +105,7 @@ return (
 
           <Button
             variant="outlined"
-            onClick={() => navigate("/formulario2")}
+            onClick={() => navigate("/contrarrazao")}
             sx={{
               color: "#fff",
               borderColor: "#fff",
