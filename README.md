@@ -1,3 +1,12 @@
+Desenvolvido por
+
+- ANTENOR DE QUEIROZ BRITO NETO 
+- ATHIRSON SOUZA PEQUENO 
+- CAMILLA SOUZA DA SILVA 
+- LESSANDRO COSTA DE FREITAS 
+- PEDRO JORGE MARQUES PEREIRA
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
