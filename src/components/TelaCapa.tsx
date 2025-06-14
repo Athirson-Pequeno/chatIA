@@ -28,7 +28,8 @@ export default function TelaCapa() {
   }, []);
 
   const handleClick = () => {
-    window.location.href = "/inicio"; // CORRETO: vai para sua tela principal de IA
+    localStorage.removeItem("rolarPara");
+    window.location.href = "/Inicio"; // CORRETO: vai para sua tela principal de IA
   };
 
   return (
@@ -82,27 +83,29 @@ export default function TelaCapa() {
           fontFamily: "'Inter', sans-serif",
         }}
       >
-        <h1 style={{ fontSize: "4rem",  
-                    margin: 0,
-                    fontWeight: 700,   
-                    lineHeight: 1.2,  }}
-        >Rede Licitações</h1>
+        <h1
+          style={{
+            fontSize: "4rem",
+            margin: 0,
+            fontWeight: 700,
+            lineHeight: 1.2,
+          }}
+        >
+          Rede Licitações
+        </h1>
         <p
           style={{
-           fontSize: "1.8rem",  // ✅ Um pouco maior
+            fontSize: "1.8rem", // ✅ Um pouco maior
             marginTop: "1rem",
             maxWidth: "80%",
             lineHeight: 1.5,
             fontWeight: 400,
           }}
-          
         >
-          A primeira IA especialista em recursos e contrarrazões para o mercado público.
+          A primeira IA especialista em recursos e contrarrazões para o mercado
+          público.
         </p>
-        <p style={{ fontSize: "1.2rem",      
-                    marginTop: "2rem",       
-                    fontWeight: 400,
-                    }}>
+        <p style={{ fontSize: "1.2rem", marginTop: "2rem", fontWeight: 400 }}>
           Clique em qualquer lugar para continuar
         </p>
       </div>
