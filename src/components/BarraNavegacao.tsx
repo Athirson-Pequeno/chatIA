@@ -12,7 +12,7 @@ export default function BarraNavegacao() {
         {/* Lado esquerdo */}
         <Box 
           onClick={() => {
-              navigate("/inicio");
+              navigate("/");
               window.scrollTo({ top: 0, behavior: "smooth" }); // ← força o scroll
             }} 
           sx={{ display: "flex", alignItems: "center", gap: 2, cursor: "pointer" }}
