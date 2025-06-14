@@ -1,4 +1,11 @@
-import { AppBar, Toolbar, Typography, Box, Button, Divider } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Box,
+  Button,
+  Divider,
+} from "@mui/material";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import HubIcon from "@mui/icons-material/Hub";
 import { useNavigate } from "react-router-dom";
@@ -10,12 +17,17 @@ export default function BarraNavegacao() {
     <AppBar position="fixed" color="inherit" elevation={1}>
       <Toolbar sx={{ justifyContent: "space-between", py: 2 }}>
         {/* Lado esquerdo */}
-        <Box 
+        <Box
           onClick={() => {
-              navigate("/");
-              window.scrollTo({ top: 0, behavior: "smooth" }); // ← força o scroll
-            }} 
-          sx={{ display: "flex", alignItems: "center", gap: 2, cursor: "pointer" }}
+            navigate("/");
+            window.scrollTo({ top: 0, behavior: "smooth" }); // ← força o scroll
+          }}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 2,
+            cursor: "pointer",
+          }}
         >
           <TrendingUpIcon sx={{ fontSize: 40, color: "#05467f" }} />
           <Divider orientation="vertical" flexItem sx={{ mx: 1 }} />
@@ -42,22 +54,21 @@ export default function BarraNavegacao() {
             Início
           </Button>
           <Button
-              sx={{ color: "#05467f" }}
-              onClick={() => {
-                if (window.location.pathname === "/inicio") {
-                  const elemento = document.getElementById("secao-pesquisa");
-                  if (elemento) {
-                    elemento.scrollIntoView({ behavior: "smooth" });
-                  }
-                } else {
-                  localStorage.setItem("rolarPara", "pesquisa");
-                  navigate("/inicio");
+            sx={{ color: "#05467f" }}
+            onClick={() => {
+              if (window.location.pathname === "/Inicio") {
+                const elemento = document.getElementById("secao-pesquisa");
+                if (elemento) {
+                  elemento.scrollIntoView({ behavior: "smooth" });
                 }
-              }}
-            >
-              Assistente IA
+              } else {
+                localStorage.setItem("rolarPara", "pesquisa");
+                navigate("/Inicio");
+              }
+            }}
+          >
+            Assistente IA
           </Button>
-          
         </Box>
       </Toolbar>
     </AppBar>
